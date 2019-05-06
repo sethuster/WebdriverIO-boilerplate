@@ -1,4 +1,4 @@
-import InternetIndexPage from '../support/pages/internet-index.page'
+import InternetIndexPage from '../support/pages/index.page'
 import assert from 'assert'
 
 describe('The Internet index Page', () => {
@@ -17,4 +17,18 @@ describe('The Internet index Page', () => {
   it('Page has the expected amount of links available', () => {
     assert.equal(InternetIndexPage.links.length, 41)
   });
+
+  it('Footer Contains Link to Elemental Selenium', () => {
+    assert.equal(InternetIndexPage.footerLink.getText(), 'Elemental Selenium');
+    assert.equal(InternetIndexPage.footerLink.getAttribute('href'), 'http://elementalselenium.com/');
+  })
+
+  describe('Links provided on the index page are expected', () => {
+    it('A/B Testing exists', () => {
+      let expected = {text: 'A/B Testing', selector: "[href='/abtest']"}
+      assert.equal($(expected.selector).isDisplayed(), true);
+      assert.equal($(expected.selector).getText(), expected.text);
+    });
+  })
+  
 })
