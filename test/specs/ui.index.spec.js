@@ -19,7 +19,7 @@ describe('The Internet index Page', () => {
   });
 
   it('Footer Contains Link to Elemental Selenium', () => {
-    assert.equal(InternetIndexPage.footerLink.getText(), 'Elemental Selenium');
+    assert.equal(InternetIndexPage.footer.getText(), 'Powered by Elemental Selenium');
     assert.equal(InternetIndexPage.footerLink.getAttribute('href'), 'http://elementalselenium.com/');
   })
 
