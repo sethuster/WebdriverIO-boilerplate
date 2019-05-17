@@ -4,7 +4,7 @@
   "description": "webdriver.io v5 boilerplate project",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/wdio ./config/wdio.conf.js"
+    "test": "./node_modules/.bin/wdio ./config/wdioc.conf.js"
   },
   "repository": {
     "type": "git",
@@ -29,12 +29,14 @@
     "@babel/preset-env": "7.4.4",
     "@babel/register": "7.4.4",
     "@wdio/cli": "^5.7.15",
-    "@wdio/local-runner": "5.8.1",
-    "@wdio/mocha-framework": "5.7.14",
-    "@wdio/selenium-standalone-service": "5.7.8",
-    "@wdio/spec-reporter": "5.7.13",
-    "@wdio/sync": "^5.8.1",
-    "webdriverio": "5.8.1"
+    "@wdio/cucumber-framework": "../webdriverio/packages/wdio-cucumber-framework",
+    "@wdio/local-runner": "../webdriverio/packages/wdio-local-runner",
+    "@wdio/mocha-framework": "../webdriverio/packages/wdio-mocha-framework",
+    "@wdio/selenium-standalone-service": "../webdriverio/packages/wdio-selenium-standalone-service",
+    "@wdio/spec-reporter": "../webdriverio/packages/wdio-spec-reporter",
+    "@wdio/sync": "../webdriverio/packages/wdio-sync",
+    "cucumber": "^5.1.0",
+    "webdriverio": "../webdriverio/packages/webdriverio"
   },
   "devDependencies": {},
   "engines": {
