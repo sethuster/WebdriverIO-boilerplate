@@ -1,0 +1,26 @@
+FROM selenium/standalone-chrome-debug:3.141.59
+
+ARG SOURCE_COMMIT
+ARG BUILD_TIME
+
+LABEL sethuster.source-commit=$SOURCE_COMMIT
+LABEL sethuster.build-time=$BUILD_TIME
+
+COPY scripts/node_12.x.sh /opt/node/node_setup.sh
+COPY ./package.json /test-runner/package.json
+
+# Setup node for install - will run apt-get update for us
+WORKDIR /opt/node
+RUN sudo bash node_setup.sh
+
+RUN sudo apt-get install -y              \
+      nodejs                             \
+      build-essential                 && \
+    sudo rm -rf /var/lib/apt/lists/*
+
+WORKDIR /test-runner
+RUN sudo npm install --unsafe-perm=true --allow-root
+
+RUN echo ">>>> Selenium-Standalone install <<<<<<"
+RUN sudo npx selenium-standalone install
+

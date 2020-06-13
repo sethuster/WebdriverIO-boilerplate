@@ -15,7 +15,7 @@ describe('The Internet index Page', () => {
   })
 
   it('Page has the expected amount of links available', () => {
-    assert.equal(InternetIndexPage.links.length, 41)
+    assert.equal(InternetIndexPage.links.length, 44)
   });
 
   it('Footer Contains Link to Elemental Selenium', () => {
