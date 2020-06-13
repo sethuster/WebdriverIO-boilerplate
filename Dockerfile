@@ -1,18 +1,13 @@
-FROM selenium/standalone-chrome-debug:3.141.59
+FROM sethuster/wdio-boilerplate-base:latest
 
-COPY scripts/node_10.x.sh /opt/node/node_setup.sh
-COPY . /webdriver-boilerplate
+ARG SOURCE_COMMIT
+ARG BUILD_TIME
 
-# Setup node for install - will run apt-get update for us
-WORKDIR /opt/node
-RUN sudo bash node_setup.sh
+LABEL sethuster.source-commit=$SOURCE_COMMIT
+LABEL sethuster.build-time=$BUILD_TIME
 
-RUN sudo apt-get install -y              \
-      nodejs                             \
-      build-essential                 && \
-    sudo rm -rf /var/lib/apt/lists/*
+COPY ./bin /test-runner/bin
+COPY ./config /test-runner/config
+COPY ./test /test-runner/test
 
-WORKDIR /webdriver-boilerplate
-RUN sudo npm install
-
-CMD ["sudo", "npm", "test"]
+CMD ["sudo", "npm", "run", "test"]
