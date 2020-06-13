@@ -23,17 +23,17 @@ fi
 (
     # Run from project dir
     cd ${THIS_SCRIPT_DIR}/..
-    docker pull sethuster/wdio-boilerplate-base:latest
+    source ./scripts/image_names.sh
 
-    IMAGE_NAME="sethuster/wdio-boilerplate-runner"
+    docker pull "${WDIO_BP_USER}/${WDIO_BP_BASE}:latest"
+
+    IMAGE_NAME="${WDIO_BP_USER}/${WDIO_BP_RUN}"
     BUILD_TIME=$(date +"%Y%m%d_%H%M%S")
 
     echo "===> Building ${IMAGE_NAME}:${BUILD_TIME}"
 
     docker build                                  \
-      --build-arg "SOURCE_COMMIT=${CIRCLE_SHA1}"  \
       --build-arg "BUILD_TIME=${BUILD_TIME}"      \
-      -t "${IMAGE_NAME}:${CIRCLE_SHA1}"           \
       -t "${IMAGE_NAME}:latest"                   \
       .
 )

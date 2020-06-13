@@ -25,8 +25,9 @@ fi
 (
     # Run from project dir
     cd ${THIS_SCRIPT_DIR}/..
+    source ./scripts/image_names.sh
 
-    IMAGE_NAME="sethuster/wdio-boilerplate-base"
+    IMAGE_NAME="${WDIO_BP_USER}/${WDIO_BP_BASE}"
     BUILD_TIME=$(date +"%Y%m%d_%H%M%S")
 
     echo "===> Building ${IMAGE_NAME}:${BUILD_TIME}"
