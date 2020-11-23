@@ -117,7 +117,8 @@ exports.config = {
             'selenium-standalone',
             {
                 args: { drivers },
-                installArgs: { drivers }
+                installArgs: { drivers },
+                skipSeleniumInstall: true
             }
         ]
     ],

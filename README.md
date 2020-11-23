@@ -18,7 +18,7 @@ Clone this project into a new directory and then navigate into the cloned direct
 
 Install the chrome and gecko drivers with the following command:
 
-`npx selenium-standalone install`
+`./scripts/install-chromedriver.sh`
 
 ### Running tests
 
