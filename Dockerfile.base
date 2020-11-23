@@ -1,4 +1,4 @@
-FROM selenium/standalone-chrome-debug:3.141.59
+FROM selenium/standalone-chrome:3.141.59
 
 ARG SOURCE_COMMIT
 ARG BUILD_TIME
@@ -8,6 +8,7 @@ LABEL sethuster.build-time=$BUILD_TIME
 
 COPY scripts/node_12.x.sh /opt/node/node_setup.sh
 COPY ./package.json /test-runner/package.json
+COPY ./scripts/install-chromedriver.sh /test-runner/scripts/install-chromedriver.sh
 
 # Setup node for install - will run apt-get update for us
 WORKDIR /opt/node
@@ -22,5 +23,5 @@ WORKDIR /test-runner
 RUN sudo npm install --unsafe-perm=true --allow-root
 
 RUN echo ">>>> Selenium-Standalone install <<<<<<"
-RUN sudo npx selenium-standalone install
+RUN sudo bash ./scripts/install-chromedriver.sh
 
