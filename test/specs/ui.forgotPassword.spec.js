@@ -8,7 +8,6 @@ describe('Forgot Password Page', () => {
 
   it('Forgot password email field', () => {
     ForgotPassword.email.setValue("david@ortiz.com");
-    browser.debug();
   })
 
   
